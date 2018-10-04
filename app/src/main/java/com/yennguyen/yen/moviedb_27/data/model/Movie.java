@@ -35,6 +35,7 @@ public class Movie implements Serializable {
     @SerializedName("vote_count")
     @Expose
     private int mVoteCount;
+
     public String getBackdropPath() {
         return mBackdropPath;
     }

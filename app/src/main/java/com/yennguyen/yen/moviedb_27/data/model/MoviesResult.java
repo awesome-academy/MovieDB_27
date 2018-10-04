@@ -11,6 +11,7 @@ public class MoviesResult {
     @SerializedName("total_pages")
     @Expose
     private int mTotalPages;
+
     @SerializedName("results")
     @Expose
     private List<Movie> mMovies = null;
