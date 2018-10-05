@@ -34,6 +34,7 @@ public class MovieDaoImpl implements MovieDao {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
             cursor = db.rawQuery(mDBHelper.TABLE_NAME, selection(), null);
         }
+
         Movie movie = getMovieFromCusor(cursor);
         return movie;
     }

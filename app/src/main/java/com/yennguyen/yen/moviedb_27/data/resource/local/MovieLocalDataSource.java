@@ -22,6 +22,7 @@ public class MovieLocalDataSource implements MovieDataSource.LocalDataSource {
         return sMovieLocalDataSource;
     }
 
+
     @Override
     public Movie getMovieLocal(int id) {
         return mDao.getMovie();
