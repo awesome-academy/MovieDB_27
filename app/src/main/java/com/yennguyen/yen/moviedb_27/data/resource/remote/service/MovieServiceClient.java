@@ -12,9 +12,6 @@ public class MovieServiceClient extends ServiceClient {
     }
 
     public static MovieAPI getInstance() {
-        if (sMovieAPI == null) {
-            throw new IllegalStateException(MovieServiceClient.class.getSimpleName());
-        }
         return sMovieAPI;
     }
 }
