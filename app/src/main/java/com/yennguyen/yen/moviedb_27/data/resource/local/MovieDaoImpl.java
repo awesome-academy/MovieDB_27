@@ -35,7 +35,7 @@ public class MovieDaoImpl implements MovieDao {
             cursor = db.rawQuery(mDBHelper.TABLE_NAME, selection(), null);
         }
 
-        Movie movie = getMovieFromCusor(cursor);
+        Movie movie = getMovieFromCursor(cursor);
         return movie;
     }
 
@@ -46,8 +46,7 @@ public class MovieDaoImpl implements MovieDao {
                 null, null, null,
                 null, null);
         mMovies = new ArrayList<>();
-        Movie movie = getMovieFromCusor(cursor);
-        mMovies.add(movie);
+        mMovies = getMoviesFromCursor(cursor);
         return mMovies;
     }
 
@@ -81,7 +80,19 @@ public class MovieDaoImpl implements MovieDao {
         return false;
     }
 
-    private Movie getMovieFromCusor(Cursor cursor) {
+    private List<Movie> getMoviesFromCursor(Cursor cursor) {
+        List<Movie> movies = new ArrayList<>();
+        if(cursor == null) return movies;
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            Movie movie = getMovieFromCursor(cursor);
+            movies.add(movie);
+        }
+        cursor.close();
+        return movies;
+    }
+
+    private Movie getMovieFromCursor(Cursor cursor) {
         Movie movie = new Movie();
         movie.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_ID)));
         movie.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_BACKDROP_PATH)));
