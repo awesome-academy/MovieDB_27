@@ -18,5 +18,4 @@ public class MainActivity extends AppCompatActivity {
         binding.setViewModel(mMainViewModel);
         setSupportActionBar(binding.toolbar);
     }
-
 }
