@@ -1,35 +1,53 @@
 package com.yennguyen.yen.moviedb_27.screen.home;
 
-import android.content.Context;
-import android.databinding.ObservableField;
-import android.os.Handler;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-
-import com.yennguyen.yen.moviedb_27.BaseViewModel;
+import com.yennguyen.yen.moviedb_27.BuildConfig;
+import com.yennguyen.yen.moviedb_27.data.model.Genre;
+import com.yennguyen.yen.moviedb_27.data.model.GenresResult;
 import com.yennguyen.yen.moviedb_27.data.repository.MovieRepository;
-import com.yennguyen.yen.moviedb_27.utils.Constants;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 
-public class HomeFragmentViewModel extends BaseViewModel {
-    private static final int POST_DELAY = 5000;
-    private FragmentManager mFragmentManager;
+public class HomeFragmentViewModel implements GenreAdapter.ItemClickListener {
+    private GenreAdapter mAdapter;
+    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private MovieRepository mMovieRepository;
-    private Runnable mRunnable;
-    private Handler mHandler = new Handler();
 
     public HomeFragmentViewModel(MovieRepository movieRepository) {
         mMovieRepository = movieRepository;
+        mAdapter = new GenreAdapter();
+        mAdapter.setItemClickListener(this);
+        getGenres();
+    }
+
+    private void getGenres() {
+        Disposable disposable = mMovieRepository.getGenres(BuildConfig.API_KEY)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<GenresResult>() {
+                    @Override
+                    public void accept(GenresResult genresResult) throws Exception {
+                        mAdapter.setGenres(genresResult.getGenres());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                    }
+                });
+        mCompositeDisposable.add(disposable);
     }
 
     @Override
-    public void onStart() {
+    public void onItemClick(Genre genre) {
 
     }
-
-    @Override
-    public void onStop() {
-
+    public GenreAdapter getAdapter(){
+        return mAdapter;
     }
 
 }

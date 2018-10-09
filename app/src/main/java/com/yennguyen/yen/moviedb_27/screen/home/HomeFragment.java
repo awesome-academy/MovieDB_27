@@ -29,8 +29,9 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         mHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         mMovieRepository = MovieRepository.getInstants(MovieLocalDataSource.getInstance(getContext()),
-                MovieRemoteDataSource.getInstance());
+                MovieRemoteDataSource.getInstance(getContext()));
         mHomeFragmentViewModel = new HomeFragmentViewModel(mMovieRepository);
+        mHomeBinding.setViewModel(mHomeFragmentViewModel);
         return mHomeBinding.getRoot();
     }
 

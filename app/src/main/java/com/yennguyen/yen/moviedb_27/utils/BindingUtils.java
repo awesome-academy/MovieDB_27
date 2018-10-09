@@ -11,8 +11,9 @@ public class BindingUtils {
             BottomNavigationView.OnNavigationItemSelectedListener listener){
         view.setOnNavigationItemSelectedListener(listener);
     }
-    @BindingAdapter("recyclerAdapter")
-    public static void setAdapterForRecyclerView(RecyclerView recyclerView, RecyclerView.Adapter adapter){
+    @BindingAdapter({"recyclerAdapter"})
+    public static void setAdapterForRecyclerView(RecyclerView recyclerView,
+                                                 RecyclerView.Adapter adapter){
         recyclerView.setAdapter(adapter);
     }
 }

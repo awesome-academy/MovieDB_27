@@ -38,11 +38,12 @@
                 android:layout_marginLeft="@dimen/dp_16"
                 android:layout_marginRight="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_8"
                 android:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:recyclerAdapter="@{viewModel.adapter}"
                 app:layout_constraintTop_toBottomOf="@+id/text_genres" />
 
             <ImageView
@@ -58,7 +59,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_now_playing"
-                app:srcCompat="@drawable/image_slider_1"/>
+                app:srcCompat="@drawable/image_slider_1" />
 
             <ImageView
                 android:id="@+id/image_top_rate"
