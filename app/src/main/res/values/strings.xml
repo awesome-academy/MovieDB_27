@@ -4,4 +4,9 @@
     <string name="title_favorite">Favorite</string>
     <string name="title_setting">Setting</string>
     <string name="action_search">Search</string>
+    <string name="title_top_rate">Top Rate</string>
+    <string name="title_popular">Most Popular</string>
+    <string name="title_now_playing">Now Playing</string>
+    <string name="title_up_coming">Up Coming</string>
+    <string name="title_genres">Genres</string>
 </resources>

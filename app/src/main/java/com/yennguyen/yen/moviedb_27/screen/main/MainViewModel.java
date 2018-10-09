@@ -28,7 +28,7 @@ public class MainViewModel implements BottomNavigationView.OnNavigationItemSelec
     public MainViewModel (AppCompatActivity appCompatActivity){
         List<Movie> movies = MovieRepository.getInstants(MovieLocalDataSource.getInstance(appCompatActivity),
                 MovieRemoteDataSource.getInstance()).getMoviesLocal();
-        mHomeFragment = HomeFragment.newInStance();
+        mHomeFragment = new HomeFragment();
         mFavoriteFragment = FavoriteFragment.newInstance(movies);
         mSettingFragment = SettingFragment.newInstance();
         mCurrentFragment = mHomeFragment;
