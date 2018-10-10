@@ -25,9 +25,9 @@ public class MainViewModel implements BottomNavigationView.OnNavigationItemSelec
     private SettingFragment mSettingFragment;
     private Fragment mCurrentFragment;
 
-    public MainViewModel (AppCompatActivity appCompatActivity){
+    public MainViewModel(AppCompatActivity appCompatActivity) {
         List<Movie> movies = MovieRepository.getInstants(MovieLocalDataSource.getInstance(appCompatActivity),
-                MovieRemoteDataSource.getInstance()).getMoviesLocal();
+                MovieRemoteDataSource.getInstance(appCompatActivity)).getMoviesLocal();
         mHomeFragment = new HomeFragment();
         mFavoriteFragment = FavoriteFragment.newInstance(movies);
         mSettingFragment = SettingFragment.newInstance();
@@ -41,22 +41,23 @@ public class MainViewModel implements BottomNavigationView.OnNavigationItemSelec
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.navigation_home :
+        switch (item.getItemId()) {
+            case R.id.navigation_home:
                 showfragment(mHomeFragment, mCurrentFragment);
                 mCurrentFragment = mHomeFragment;
                 return true;
-            case R.id.navigation_favorite :
+            case R.id.navigation_favorite:
                 showfragment(mFavoriteFragment, mCurrentFragment);
                 mCurrentFragment = mFavoriteFragment;
                 return true;
-            case R.id.navigation_setting :
+            case R.id.navigation_setting:
                 showfragment(mSettingFragment, mCurrentFragment);
                 mCurrentFragment = mSettingFragment;
         }
         return false;
     }
-    private void showfragment(Fragment fragmentShow, Fragment fragmentHide){
+
+    private void showfragment(Fragment fragmentShow, Fragment fragmentHide) {
         mFragmentManager.beginTransaction().hide(fragmentHide).show(fragmentShow);
     }
 }

@@ -1,5 +1,7 @@
 package com.yennguyen.yen.moviedb_27.data.resource.remote;
 
+import android.content.Context;
+
 import com.yennguyen.yen.moviedb_27.data.model.Cast;
 import com.yennguyen.yen.moviedb_27.data.model.CastsResult;
 import com.yennguyen.yen.moviedb_27.data.model.GenresResult;
@@ -20,9 +22,9 @@ public class MovieRemoteDataSource implements MovieDataSource.RemoteDataSource {
         mMovieAPI = movieAPI;
     }
 
-    public static synchronized MovieRemoteDataSource getInstance() {
+    public static synchronized MovieRemoteDataSource getInstance(Context context) {
         if (sMovieRemoteDataSource == null) {
-            sMovieRemoteDataSource = new MovieRemoteDataSource(MovieServiceClient.getInstance());
+            sMovieRemoteDataSource = new MovieRemoteDataSource(MovieServiceClient.getInstance(context));
         }
         return sMovieRemoteDataSource;
     }
