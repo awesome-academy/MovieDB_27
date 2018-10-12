@@ -6,10 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.yennguyen.yen.moviedb_27.screen.movie.EndLessRecyclerOnScrollListener;
 
 public class BindingUtils {
     @BindingAdapter("onNavigationItemSelected")
-    public static void setOnNavigationItemSelectedListener(
+    public static void onNavigationItemSelectedListener(
             BottomNavigationView view,
             BottomNavigationView.OnNavigationItemSelectedListener listener) {
         view.setOnNavigationItemSelectedListener(listener);
@@ -24,5 +25,10 @@ public class BindingUtils {
     @BindingAdapter("imageUrl")
     public static void loadImage(ImageView imageView, String postPath) {
         Glide.with(imageView.getContext()).load(StringUtils.getUrl(postPath)).into(imageView);
+    }
+
+    @BindingAdapter("onScroll")
+    public static void onScrollView(RecyclerView view, EndLessRecyclerOnScrollListener listener) {
+        view.addOnScrollListener(listener);
     }
 }

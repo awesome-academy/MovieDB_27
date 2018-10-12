@@ -20,10 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/color_red"
-            app:layout_constraintStart_toStartOf="parent"
+            android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark"
             app:title="@string/app_name" />
 
         <FrameLayout
@@ -42,10 +42,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?android:attr/windowBackground"
+            android:theme="@style/AppTheme"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/navigation"/>
+            app:menu="@menu/navigation"
+            app:onNavigationItemSelected="@{viewModel::onNavigationItemSelected}" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
