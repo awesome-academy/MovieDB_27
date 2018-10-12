@@ -45,6 +45,7 @@ public class HomeFragmentViewModel implements GenreAdapter.ItemClickListener {
     @Override
     public void onItemClick(Genre genre) {
 
+
     }
     public GenreAdapter getAdapter(){
         return mAdapter;
