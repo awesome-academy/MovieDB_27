@@ -7,8 +7,8 @@ import com.yennguyen.yen.moviedb_27.data.model.Movie;
 
 public class ItemMovieViewModel extends BaseObservable {
     public ObservableField<Movie> mMovieObservableField = new ObservableField<>();
-    private MovieAdapter.setOnClickListener mListener;
     private MovieAdapter.setFavoriteClickListener mFavoriteListener;
+    private MovieAdapter.setOnClickListener mListener;
 
     public ItemMovieViewModel(MovieAdapter.setOnClickListener listener,
                               MovieAdapter.setFavoriteClickListener favoriteListener) {

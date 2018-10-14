@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.yennguyen.yen.moviedb_27.screen.home.HomeFragmentViewModel"/>
+            type="com.yennguyen.yen.moviedb_27.screen.home.HomeFragmentViewModel" />
     </data>
 
     <android.support.v4.widget.NestedScrollView
@@ -43,8 +44,8 @@
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:recyclerAdapter="@{viewModel.adapter}"
-                app:layout_constraintTop_toBottomOf="@+id/text_genres" />
+                app:layout_constraintTop_toBottomOf="@+id/text_genres"
+                app:recyclerAdapter="@{viewModel.adapter}" />
 
             <ImageView
                 android:id="@+id/image_now_playing"
@@ -55,6 +56,7 @@
                 android:layout_marginRight="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginTop="@dimen/dp_8"
+                android:onClick="@{viewModel::onNowPlayingClick}"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,12 +72,13 @@
                 android:layout_marginRight="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginTop="@dimen/dp_8"
+                android:onClick="@{viewModel::onTopRateClick}"
                 android:scaleType="centerCrop"
+                android:src="@drawable/image_slider_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.511"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                android:src="@drawable/image_slider_2"/>
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <ImageView
                 android:id="@+id/image_up_coming"
@@ -86,11 +89,12 @@
                 android:layout_marginRight="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginTop="@dimen/dp_8"
+                android:onClick="@{viewModel::onUpComingClick}"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_up_coming"
-                app:srcCompat="@drawable/upcoming"/>
+                app:srcCompat="@drawable/upcoming" />
 
             <ImageView
                 android:id="@+id/image_popular"
@@ -101,12 +105,13 @@
                 android:layout_marginRight="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginTop="@dimen/dp_8"
+                android:onClick="@{viewModel::onPopularClick}"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_popular"
-                app:srcCompat="@drawable/image_slider_3"/>
+                app:srcCompat="@drawable/image_slider_3" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline"
@@ -119,13 +124,13 @@
                 android:id="@+id/textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginTop="@dimen/dp_16"
-                android:layout_marginEnd="@dimen/dp_16"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:text="@string/title_top_rate"
                 android:textSize="@dimen/sp_20"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline" />
 
@@ -140,9 +145,9 @@
                 android:id="@+id/text_popular"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginTop="@dimen/dp_16"
-                android:layout_marginEnd="@dimen/dp_16"
                 android:text="@string/title_popular"
                 android:textSize="@dimen/sp_20"
                 android:textStyle="bold"
@@ -154,9 +159,9 @@
                 android:id="@+id/text_now_playing"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginTop="@dimen/dp_16"
-                android:layout_marginEnd="@dimen/dp_16"
                 android:text="@string/title_now_playing"
                 android:textSize="@dimen/sp_20"
                 android:textStyle="bold"
@@ -182,9 +187,9 @@
                 android:id="@+id/text_up_coming"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginTop="@dimen/dp_16"
-                android:layout_marginEnd="@dimen/dp_16"
                 android:text="@string/title_up_coming"
                 android:textSize="@dimen/sp_20"
                 android:textStyle="bold"
