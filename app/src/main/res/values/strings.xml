@@ -9,4 +9,8 @@
     <string name="title_now_playing">Now Playing</string>
     <string name="title_up_coming">Up Coming</string>
     <string name="title_genres">Genres</string>
+    <string name="title_overview">OverView</string>
+    <string name="title_cast">Cast</string>
+    <string name="title_trailer">Trailer</string>
+    <string name="title_company">Company</string>
 </resources>

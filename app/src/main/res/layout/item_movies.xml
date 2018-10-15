@@ -17,6 +17,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraint_fragment_genre"
+            android:onClick="@{viewModel::onItemMovieClick}"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
