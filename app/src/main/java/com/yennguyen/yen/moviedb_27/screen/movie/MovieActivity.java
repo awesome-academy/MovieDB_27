@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.yennguyen.yen.moviedb_27.R;
+import com.yennguyen.yen.moviedb_27.data.model.Cast;
 import com.yennguyen.yen.moviedb_27.data.model.Category;
 import com.yennguyen.yen.moviedb_27.data.model.Genre;
 import com.yennguyen.yen.moviedb_27.data.repository.MovieRepository;
@@ -43,6 +44,10 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
             Genre genre = (Genre) getIntent().getSerializableExtra(Constants.EXTRA_GENRE);
             mMovieViewModel.getMoviesByGenre(genre.getId());
             getSupportActionBar().setTitle(genre.getName());
+        }else if(getIntent().hasExtra(Constants.EXTRA_CAST)){
+            Cast cast = (Cast) getIntent().getSerializableExtra(Constants.EXTRA_CAST);
+            mMovieViewModel.getMoviesByCast(cast.getId());
+            getSupportActionBar().setTitle(cast.getName());
         }
     }
 

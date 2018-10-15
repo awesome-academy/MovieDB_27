@@ -41,8 +41,8 @@ public class MovieViewModel extends BaseObservable implements MovieAdapter.setOn
                 .subscribe(new Consumer<MoviesResult>() {
                     @Override
                     public void accept(MoviesResult moviesResult) throws Exception {
-                        mIsLoading.set(false);
                         mAdapter.addMovie(moviesResult.getMovies());
+                        mIsLoading.set(false);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -62,8 +62,8 @@ public class MovieViewModel extends BaseObservable implements MovieAdapter.setOn
                 .subscribe(new Consumer<MoviesResult>() {
                     @Override
                     public void accept(MoviesResult moviesResult) throws Exception {
-                        mIsLoading.set(false);
                         mAdapter.addMovie(moviesResult.getMovies());
+                        mIsLoading.set(false);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -74,6 +74,26 @@ public class MovieViewModel extends BaseObservable implements MovieAdapter.setOn
         mCompositeDisposable.add(disposable);
     }
 
+    public void getMoviesByCast(int id) {
+        mIsLoading.set(true);
+        mId = id;
+        Disposable disposable = mRepository.getMoviesByCast(BuildConfig.API_KEY, id, mPage)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<MoviesResult>() {
+                    @Override
+                    public void accept(MoviesResult moviesResult) throws Exception {
+                        mAdapter.addMovie(moviesResult.getMovies());
+                        mIsLoading.set(false);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                    }
+                });
+        mCompositeDisposable.add(disposable);
+    }
     @Override
     public void onItemClick(Movie movie) {
 
