@@ -4,6 +4,7 @@ import com.yennguyen.yen.moviedb_27.data.model.Cast;
 import com.yennguyen.yen.moviedb_27.data.model.CastsResult;
 import com.yennguyen.yen.moviedb_27.data.model.GenresResult;
 import com.yennguyen.yen.moviedb_27.data.model.Movie;
+import com.yennguyen.yen.moviedb_27.data.model.MovieDetail;
 import com.yennguyen.yen.moviedb_27.data.model.MoviesResult;
 import com.yennguyen.yen.moviedb_27.data.model.TrailerMoviesResult;
 import com.yennguyen.yen.moviedb_27.data.resource.MovieDataSource;
@@ -69,6 +70,11 @@ public class MovieRepository implements MovieDataSource.LocalDataSource, MovieDa
     @Override
     public Observable<Movie> getMovie(String api_key) {
         return mRemoteDataSource.getMovie(api_key);
+    }
+
+    @Override
+    public Observable<MovieDetail> getMovieDetail(String api_key, int movieId) {
+        return mRemoteDataSource.getMovieDetail(api_key, movieId);
     }
 
     @Override

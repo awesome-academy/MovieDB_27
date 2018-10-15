@@ -6,11 +6,13 @@ import com.yennguyen.yen.moviedb_27.data.model.Cast;
 import com.yennguyen.yen.moviedb_27.data.model.CastsResult;
 import com.yennguyen.yen.moviedb_27.data.model.GenresResult;
 import com.yennguyen.yen.moviedb_27.data.model.Movie;
+import com.yennguyen.yen.moviedb_27.data.model.MovieDetail;
 import com.yennguyen.yen.moviedb_27.data.model.MoviesResult;
 import com.yennguyen.yen.moviedb_27.data.model.TrailerMoviesResult;
 import com.yennguyen.yen.moviedb_27.data.resource.MovieDataSource;
 import com.yennguyen.yen.moviedb_27.data.resource.remote.service.MovieAPI;
 import com.yennguyen.yen.moviedb_27.data.resource.remote.service.MovieServiceClient;
+import com.yennguyen.yen.moviedb_27.utils.StringUtils;
 
 import io.reactivex.Observable;
 
@@ -42,6 +44,11 @@ public class MovieRemoteDataSource implements MovieDataSource.RemoteDataSource {
     @Override
     public Observable<Movie> getMovie(String api_key) {
         return mMovieAPI.getMovie(api_key);
+    }
+
+    @Override
+    public Observable<MovieDetail> getMovieDetail(String api_key, int movieId) {
+        return mMovieAPI.getMovieDetail(movieId, api_key, StringUtils.appendToResponse());
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.yennguyen.yen.moviedb_27.data.model.Cast;
 import com.yennguyen.yen.moviedb_27.data.model.CastsResult;
 import com.yennguyen.yen.moviedb_27.data.model.GenresResult;
 import com.yennguyen.yen.moviedb_27.data.model.Movie;
+import com.yennguyen.yen.moviedb_27.data.model.MovieDetail;
 import com.yennguyen.yen.moviedb_27.data.model.MoviesResult;
 import com.yennguyen.yen.moviedb_27.data.model.TrailerMoviesResult;
 
@@ -30,6 +31,8 @@ public interface MovieDataSource {
         Observable<GenresResult> getGenres(String api_key);
 
         Observable<Movie> getMovie(String api_key);
+
+        Observable<MovieDetail> getMovieDetail(String api_key, int movieId);
 
         Observable<MoviesResult> getMoviesByGenre(String api_key, int genreId, int page);
 

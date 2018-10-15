@@ -4,6 +4,7 @@ import com.yennguyen.yen.moviedb_27.data.model.Cast;
 import com.yennguyen.yen.moviedb_27.data.model.CastsResult;
 import com.yennguyen.yen.moviedb_27.data.model.GenresResult;
 import com.yennguyen.yen.moviedb_27.data.model.Movie;
+import com.yennguyen.yen.moviedb_27.data.model.MovieDetail;
 import com.yennguyen.yen.moviedb_27.data.model.MoviesResult;
 import com.yennguyen.yen.moviedb_27.data.model.TrailerMoviesResult;
 
@@ -23,6 +24,11 @@ public interface MovieAPI {
 
     @GET("movie/{id}")
     Observable<Movie> getMovie(@Query("api_key") String api_key);
+
+    @GET("movie/{id}")
+    Observable<MovieDetail> getMovieDetail(@Path("id") int id,
+                                           @Query("api_key") String api_key,
+                                           @Query("append_to_response") String append);
 
     @GET("discover/movie")
     Observable<MoviesResult> getMoviesByGenre(@Query("api_key") String api_key,
