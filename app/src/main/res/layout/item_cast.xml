@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yennguyen.yen.moviedb_27.screen.movie_detail.ItemCastViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:onClick="@{viewModel::onItemClick}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8">
+
+        <ImageView
+            android:id="@+id/image_cast"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_125"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewModel.mCastObservableField.profilePath}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{viewModel.mCastObservableField.name}"
+            android:textSize="@dimen/sp_12"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_cast" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

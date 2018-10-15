@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yennguyen.yen.moviedb_27.screen.movie_detail.ItemTrailerViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:onClick="@{viewModel::onItemClick}">
+
+        <ImageView
+            android:id="@+id/image_trailer"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_150"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:imageUrlYoutube="@{viewModel.mTrailerMovieObservableField.key}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play_circle_outline"
+            app:layout_constraintBottom_toBottomOf="@+id/image_trailer"
+            app:layout_constraintEnd_toEndOf="@id/image_trailer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
