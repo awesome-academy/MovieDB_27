@@ -24,4 +24,7 @@ public class Constants {
 
     public static final String BASE_IMAGE_URL_YOUTUBE = "https://img.youtube.com/vi/";
     public static final String IMAGE_QUALITY = "/hqdefault.jpg";
+
+    public static final int TIME_OUT = 300;
+
 }

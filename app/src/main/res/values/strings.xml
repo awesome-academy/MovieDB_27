@@ -13,4 +13,5 @@
     <string name="title_cast">Cast</string>
     <string name="title_trailer">Trailer</string>
     <string name="title_company">Company</string>
+    <string name="string_search">Search Movie</string>
 </resources>
