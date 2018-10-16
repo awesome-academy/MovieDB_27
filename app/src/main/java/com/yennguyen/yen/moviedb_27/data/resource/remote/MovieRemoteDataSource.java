@@ -62,6 +62,11 @@ public class MovieRemoteDataSource implements MovieDataSource.RemoteDataSource {
     }
 
     @Override
+    public Observable<MoviesResult> getMoviesByCompany(String api_key, int companyId, int page) {
+        return mMovieAPI.getMoviesByCompany(api_key, companyId, page);
+    }
+
+    @Override
     public Observable<MoviesResult> searchMoviesByTitle(String api_key, String title, int page) {
         return mMovieAPI.searchMoviesbyTitle(api_key, title, page);
     }
