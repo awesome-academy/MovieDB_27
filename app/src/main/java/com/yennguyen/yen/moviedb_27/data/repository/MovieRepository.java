@@ -88,6 +88,11 @@ public class MovieRepository implements MovieDataSource.LocalDataSource, MovieDa
     }
 
     @Override
+    public Observable<MoviesResult> getMoviesByCompany(String api_key, int companyId, int page) {
+        return mRemoteDataSource.getMoviesByCompany(api_key, companyId, page);
+    }
+
+    @Override
     public Observable<MoviesResult> searchMoviesByTitle(String api_key, String title, int page) {
         return mRemoteDataSource.searchMoviesByTitle(api_key, title, page);
     }

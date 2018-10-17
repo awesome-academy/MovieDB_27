@@ -9,6 +9,7 @@ import com.yennguyen.yen.moviedb_27.R;
 import com.yennguyen.yen.moviedb_27.data.model.Cast;
 import com.yennguyen.yen.moviedb_27.data.model.Category;
 import com.yennguyen.yen.moviedb_27.data.model.Genre;
+import com.yennguyen.yen.moviedb_27.data.model.ProductionCompany;
 import com.yennguyen.yen.moviedb_27.data.repository.MovieRepository;
 import com.yennguyen.yen.moviedb_27.data.resource.local.MovieLocalDataSource;
 import com.yennguyen.yen.moviedb_27.data.resource.remote.MovieRemoteDataSource;
@@ -28,10 +29,7 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
                 MovieRemoteDataSource.getInstance(this));
         mMovieViewModel = new MovieViewModel(mMovieRepository);
         mBinding.setViewModel(mMovieViewModel);
-        setSupportActionBar(mBinding.toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        mBinding.toolbar.setNavigationOnClickListener(this);
+        setToolBar();
         handleEvent();
     }
 
@@ -48,11 +46,22 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
             Cast cast = (Cast) getIntent().getSerializableExtra(Constants.EXTRA_CAST);
             mMovieViewModel.getMoviesByCast(cast.getId());
             getSupportActionBar().setTitle(cast.getName());
+        } else if (getIntent().hasExtra(Constants.EXTRA_COMPANY)) {
+            ProductionCompany company = (ProductionCompany) getIntent().getSerializableExtra(Constants.EXTRA_COMPANY);
+            mMovieViewModel.getMoviesByCompany(company.getId());
+            getSupportActionBar().setTitle(company.getName());
         }
     }
 
     @Override
     public void onClick(View v) {
         finish();
+    }
+
+    public void setToolBar(){
+        setSupportActionBar(mBinding.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mBinding.toolbar.setNavigationOnClickListener(this);
     }
 }

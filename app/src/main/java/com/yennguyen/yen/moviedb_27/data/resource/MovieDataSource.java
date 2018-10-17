@@ -1,5 +1,7 @@
 package com.yennguyen.yen.moviedb_27.data.resource;
 
+import android.databinding.ObservableField;
+
 import com.yennguyen.yen.moviedb_27.data.model.Cast;
 import com.yennguyen.yen.moviedb_27.data.model.CastsResult;
 import com.yennguyen.yen.moviedb_27.data.model.GenresResult;
@@ -37,6 +39,8 @@ public interface MovieDataSource {
         Observable<MoviesResult> getMoviesByGenre(String api_key, int genreId, int page);
 
         Observable<MoviesResult> getMoviesByCast(String api_key, int castId, int page);
+
+        Observable<MoviesResult> getMoviesByCompany (String api_key, int companyId, int page);
 
         Observable<MoviesResult> searchMoviesByTitle(String api_key, String title, int page);
 

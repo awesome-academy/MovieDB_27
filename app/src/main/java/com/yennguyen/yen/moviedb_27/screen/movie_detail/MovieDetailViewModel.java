@@ -24,6 +24,7 @@ public class MovieDetailViewModel extends BaseObservable implements TrailerAdapt
     public ObservableField<MovieDetail> mMovieDetailObservableField = new ObservableField<>();
     private TrailerAdapter mTrailerAdapter;
     private CastAdapter mCastAdapter;
+    private CompanyAdapter mCompanyAdapter;
     private MovieRepository mRepository;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private Context mContext;
@@ -35,6 +36,7 @@ public class MovieDetailViewModel extends BaseObservable implements TrailerAdapt
         mRepository = repository;
         mTrailerAdapter = new TrailerAdapter();
         mCastAdapter = new CastAdapter();
+        mCompanyAdapter = new CompanyAdapter();
     }
 
     public void setMovie(Movie movie) {
@@ -49,6 +51,10 @@ public class MovieDetailViewModel extends BaseObservable implements TrailerAdapt
         return mCastAdapter;
     }
 
+    public CompanyAdapter getCompanyAdapter(){
+        return mCompanyAdapter;
+    }
+
     public void getMovieDetail(int id) {
         Disposable disposable = mRepository.getMovieDetail(BuildConfig.API_KEY, id)
                 .subscribeOn(Schedulers.io())
@@ -58,6 +64,7 @@ public class MovieDetailViewModel extends BaseObservable implements TrailerAdapt
                     public void accept(MovieDetail movieDetail) throws Exception {
                         mTrailerAdapter.addTrailer(movieDetail.getTrailerMovieResult().getTrailerMovies());
                         mCastAdapter.addCast(movieDetail.getCastResult().getCasts());
+                        mCompanyAdapter.getCompany(movieDetail.getCompanies());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
